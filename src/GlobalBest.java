@@ -38,8 +38,6 @@ public class GlobalBest {
             }
         }
         position = reference[note];
-        System.out.print(reference[note]);
-        System.out.println();
         return reference[note];
     }
 

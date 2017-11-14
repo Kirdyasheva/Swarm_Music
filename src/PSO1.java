@@ -52,14 +52,14 @@ public class PSO1 {
     }
 
     private int PSO(int[] reference) {
-        Particles[] p = new Particles[10];
+        Particles[] p = new Particles[1000];
         GlobalBest globalBest = new GlobalBest(reference);
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < p.length; j++) {
             p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length - 1]);
         }
         int best = globalBest.countGlobal(p, reference);
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < p.length; j++) {
             p[j].setMyBest(p[j].updateMyBest(reference));
             p[j].setMyBestPosition(p[j].getPosition());
         }
@@ -75,7 +75,7 @@ public class PSO1 {
                 }
             }
             k++;
-        } while (k < 10);
+        } while (k < 1000);
         return globalBest.getPosition();
     }
 
