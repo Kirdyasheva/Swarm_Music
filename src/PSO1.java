@@ -3,9 +3,9 @@ public class PSO1 {
     int upperBound = 72;
     int[] reference = new int[15];
     int tonality;
-    double c1;
-    double c2;
-    double m;
+    double c1 = 1.1;
+    double c2 = 1.2;
+    double m = 1;
 
     public PSO1(int tonality) {
         this.tonality = tonality;
