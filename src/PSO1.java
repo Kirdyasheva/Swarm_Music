@@ -14,11 +14,11 @@ public class PSO1 {
 
     public int[] PSO() {
         int a[] = new int[16];
-        for(int i=0; i<16; i++) {
-            if(i==0) {
+        for (int i = 0; i < 16; i++) {
+            if (i == 0) {
                 a[i] = PSO(reference);
             } else {
-                a[i] = PSO(resetReference(a[i-1]));
+                a[i] = PSO(resetReference(a[i - 1]));
             }
         }
         return a;
