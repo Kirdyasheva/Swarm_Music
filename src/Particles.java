@@ -7,6 +7,7 @@ public class Particles {
     double r1;
     double r2;
     double myBest;
+    double myBestPosition;
 
     public Particles(double c1, double c2, double m, double start, double end) {
         this.c1 = c1;
@@ -17,7 +18,7 @@ public class Particles {
 
     private void initialize(double start, double end) {
         myBest = Double.POSITIVE_INFINITY;
-        velocity = 0;
+        velocity = -(Math.random() * (end - start)) + start;
         position = (Math.random() * (end - start)) + start;
     }
 
@@ -26,18 +27,23 @@ public class Particles {
     }
 
     public void setVelocity(double globalBest) { //firstly update velocity
-        velocity = velocity * m + c1 * Math.random() * (myBest - position) + c2 * Math.random() * (globalBest - position);
+        velocity = velocity * m + c1 * Math.random() * (myBestPosition - position) + c2 * Math.random() * (globalBest - position);
     }
 
     public void setMyBest(double myBest) {
         this.myBest = myBest;
     }
 
+    public void setMyBestPosition(double bestPosition) {
+        myBestPosition = bestPosition;
+    }
+
+
     public double updateMyBest(int[] reference) {
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < reference.length; i++) {
-            if (Math.abs(position - reference[i]) < min) {
-                min = Math.abs(position - reference[i]);
+            if (Math.abs(position - (double) reference[i]) < min) {
+                min = Math.abs(position - (double) reference[i]);
             }
         }
         return min;

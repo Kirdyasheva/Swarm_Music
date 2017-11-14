@@ -3,7 +3,7 @@ public class PSO1 {
     int upperBound = 72;
     int[] reference = new int[15];
     int tonality;
-    double c1 = 1.0;
+    double c1 = 2.0;
     double c2 = 1.2;
     double m = 0.1;
 
@@ -52,15 +52,16 @@ public class PSO1 {
     }
 
     private int PSO(int[] reference) {
-        Particles[] p = new Particles[1000];
+        Particles[] p = new Particles[10];
         GlobalBest globalBest = new GlobalBest(reference);
-        for (int j = 0; j < 1000; j++) {
+        for (int j = 0; j < 10; j++) {
             p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length - 1]);
         }
         int best = globalBest.countGlobal(p, reference);
 
-        for (int j = 0; j < 1000; j++) {
-            p[j].setMyBest(Math.abs(best - p[j].getPosition()));
+        for (int j = 0; j < 10; j++) {
+            p[j].setMyBest(p[j].updateMyBest(reference));
+            p[j].setMyBestPosition(p[j].getPosition());
         }
 
         int k = 0;
@@ -70,6 +71,7 @@ public class PSO1 {
                 p[i].setPosition();
                 if (p[i].getMyBest() > p[i].updateMyBest(reference)) {
                     p[i].setMyBest(p[i].updateMyBest(reference));
+                    p[i].setMyBestPosition(p[i].getPosition());
                 }
             }
             k++;

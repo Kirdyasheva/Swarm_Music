@@ -1,13 +1,13 @@
 public class GlobalBest {
     private int position;
 
-    public GlobalBest(int[] reference) {
+    public GlobalBest(int[] reference) { //генерация первого GlobalBest
         do {
             position = (int) (Math.random() * (reference[reference.length - 1] - reference[0] + 1) + reference[0]);
         } while (!inReference(reference, position));
     }
 
-    private boolean inReference(int[] reference, int position) {
+    private boolean inReference(int[] reference, int position) { //генерация первого GlobalBest
         for (int i = 0; i < reference.length; i++) {
             if (reference[i] == position) {
                 return true;
@@ -38,6 +38,8 @@ public class GlobalBest {
             }
         }
         position = reference[note];
+        System.out.print(reference[note]);
+        System.out.println();
         return reference[note];
     }
 
