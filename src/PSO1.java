@@ -14,7 +14,7 @@ public class PSO1 {
 
     public int[] PSO() {
         int a[] = new int[16];
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<16; i++) {
             if(i==0) {
                 a[i] = PSO(reference);
             } else {
@@ -52,7 +52,7 @@ public class PSO1 {
                 j++;
             }
         }
-        int b[] = new int[j - 1];
+        int b[] = new int[j];
         for (int i = 0; i < j; i++) {
             b[i] = a[i];
         }
