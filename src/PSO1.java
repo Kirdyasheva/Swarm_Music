@@ -3,9 +3,9 @@ public class PSO1 {
     int upperBound = 72;
     int[] reference = new int[15];
     int tonality;
-    double c1 = 2.0;
+    double c1 = 0.9;
     double c2 = 1.2;
-    double m = 0.1;
+    double m = 0.015;
 
     public PSO1(int tonality) {
         this.tonality = tonality;
@@ -52,7 +52,7 @@ public class PSO1 {
     }
 
     private int PSO(int[] reference) {
-        Particles[] p = new Particles[1000];
+        Particles[] p = new Particles[100];
         GlobalBest globalBest = new GlobalBest(reference);
         for (int j = 0; j < p.length; j++) {
             p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length - 1]);
@@ -75,7 +75,7 @@ public class PSO1 {
                 }
             }
             k++;
-        } while (k < 1000);
+        } while (k < 100);
         return globalBest.getPosition();
     }
 
