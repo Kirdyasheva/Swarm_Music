@@ -35,9 +35,9 @@ public class Particles {
 
     public double updateMyBest(int[] reference) {
         double min = Double.POSITIVE_INFINITY;
-        for(int i=0; i<reference.length; i++){
-            if(Math.abs(position-reference[i])<min){
-                min = Math.abs(position-reference[i]);
+        for (int i = 0; i < reference.length; i++) {
+            if (Math.abs(position - reference[i]) < min) {
+                min = Math.abs(position - reference[i]);
             }
         }
         return min;
