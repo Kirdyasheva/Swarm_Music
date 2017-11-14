@@ -12,8 +12,16 @@ public class PSO1 {
         reference = setReference(tonality);
     }
 
-    public int PSO() {
-        return PSO(reference);
+    public int[] PSO() {
+        int a[] = new int[16];
+        for(int i=0; i<3; i++) {
+            if(i==0) {
+                a[i] = PSO(reference);
+            } else {
+                a[i] = PSO(resetReference(a[i-1]));
+            }
+        }
+        return a;
     }
 
     private int[] setReference(int tonality) {
@@ -75,7 +83,7 @@ public class PSO1 {
                 }
             }
             k++;
-        } while (k < 100);
+        } while (k < 10);
         return globalBest.getPosition();
     }
 
