@@ -47,7 +47,7 @@ public class PSO1 {
         return b;
     }
 
-    private void PSO(int[] reference) {
+    private int PSO(int[] reference) {
         Particles[] p = new Particles[1000];
         GlobalBest globalBest = new GlobalBest(reference);
         for (int j = 0; j < 1000; j++) {
@@ -58,8 +58,12 @@ public class PSO1 {
             for (int i = 0; i < p.length; i++) {
                 p[i].setVelocity(globalBest.countGlobal(p, reference));
                 p[i].setPosition();
+                if (p[i].getMyBest() > p[i].updateMyBest(reference)) {
+                    p[i].setMyBest(p[i].updateMyBest(reference));
+                }
             }
         } while (k < 1000);
+        return globalBest.getPosition();
     }
 
     private double calculateFitness(Particles p, int[] reference) {
