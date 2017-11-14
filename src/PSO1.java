@@ -3,9 +3,9 @@ public class PSO1 {
     int upperBound = 72;
     int[] reference = new int[15];
     int tonality;
-    double c1 = 1.1;
+    double c1 = 1.0;
     double c2 = 1.2;
-    double m = 1;
+    double m = 0.1;
 
     public PSO1(int tonality) {
         this.tonality = tonality;
@@ -68,12 +68,12 @@ public class PSO1 {
             for (int i = 0; i < p.length; i++) {
                 p[i].setVelocity(globalBest.countGlobal(p, reference));
                 p[i].setPosition();
-                if (p[i].getMyBest() < p[i].updateMyBest(reference)) {
+                if (p[i].getMyBest() > p[i].updateMyBest(reference)) {
                     p[i].setMyBest(p[i].updateMyBest(reference));
                 }
             }
             k++;
-        } while (k < 100);
+        } while (k < 10);
         return globalBest.getPosition();
     }
 
