@@ -12,7 +12,7 @@ public class PSO1 {
         reference = setReference(tonality);
     }
 
-    public int PSO(){
+    public int PSO() {
         return PSO(reference);
     }
 
@@ -55,7 +55,7 @@ public class PSO1 {
         Particles[] p = new Particles[1000];
         GlobalBest globalBest = new GlobalBest(reference);
         for (int j = 0; j < 1000; j++) {
-            p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length]);
+            p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length-1]);
         }
         int k = 0;
         do {
@@ -66,6 +66,7 @@ public class PSO1 {
                     p[i].setMyBest(p[i].updateMyBest(reference));
                 }
             }
+            k++;
         } while (k < 1000);
         return globalBest.getPosition();
     }

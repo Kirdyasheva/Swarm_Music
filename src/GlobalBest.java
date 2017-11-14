@@ -2,7 +2,18 @@ public class GlobalBest {
     private int position;
 
     public GlobalBest(int[] reference) {
-        position = (int) (Math.random() * (reference[reference.length - 1] - reference[0] + 1) + reference[0]);
+        do {
+            position = (int) (Math.random() * (reference[reference.length - 1] - reference[0] + 1) + reference[0]);
+        } while (!inReference(reference, position));
+    }
+
+    private boolean inReference(int[] reference, int position) {
+        for (int i = 0; i < reference.length; i++) {
+            if (reference[i] == position) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int countGlobal(Particles[] p, int[] reference) {
