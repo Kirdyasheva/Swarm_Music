@@ -12,6 +12,10 @@ public class PSO1 {
         reference = setReference(tonality);
     }
 
+    public int PSO(){
+        return PSO(reference);
+    }
+
     private int[] setReference(int tonality) {
         int[] a = new int[15];
         int current = tonality;
