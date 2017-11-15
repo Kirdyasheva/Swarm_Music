@@ -18,7 +18,7 @@ public class PSO1 {
             if (i == 0) {
                 a[i] = PSO(reference);
             } else {
-                a[i] = PSO(resetReference(a[i - 1]));
+                a[i] = PSO(resetReference(a, i - 1));
             }
         }
         return a;
@@ -43,17 +43,22 @@ public class PSO1 {
         return a;
     }
 
-    private int[] resetReference(int note) { //reset array with possible values of chords depends on the neighbour note
+    private int[] resetReference(int[] notes, int k) { //reset array with possible values of chords depends on the neighbour note
         int[] a = new int[24];
         int j = 0;
         for (int i = 0; i < reference.length; i++) {
-            if (Math.abs(reference[i] - note) <= 12 && reference[i] != note) {
+            if (Math.abs(reference[i] - notes[k]) <= 12 && reference[i] != notes[k]) {
                 a[j] = reference[i];
                 j++;
             }
         }
+
         int b[] = new int[j];
-        for (int i = 0; i < j; i++) {
+        for (
+                int i = 0;
+                i < j; i++)
+
+        {
             b[i] = a[i];
         }
         return b;
@@ -87,7 +92,7 @@ public class PSO1 {
         return globalBest.getPosition();
     }
 
-    private double calculateFitness(Particles p, int[] reference) {
+   /* private double calculateFitness(Particles p, int[] reference) {
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < reference.length; i++) {
             if (Math.abs(p.getPosition() - reference[i]) < min) {
@@ -95,5 +100,5 @@ public class PSO1 {
             }
         }
         return min;
-    }
+    }*/
 }
