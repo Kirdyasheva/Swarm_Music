@@ -19,7 +19,7 @@ public class PSO1 {
     public int[] PSO2(int[] notes) {
         int[] melody = new int[notes.length / 3 * 2];
         int j = 0;
-        for (int i = 0; i < melody.length; i += 3) {
+        for (int i = 0; i < notes.length; i += 3) {
             if (i == 0) {
                 melody[j] = PSO(melodyReference(notes[i], notes[i + 1], notes[i + 2], 0));
                 j++;
