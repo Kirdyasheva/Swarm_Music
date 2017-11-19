@@ -47,7 +47,7 @@ public class PSO1 {
         int[] a = new int[24];
         int j = 0;
         for (int i = 0; i < reference.length; i++) {
-            if (Math.abs(reference[i] - notes[k]) <= 12 && reference[i] != notes[k]) {
+            if (Math.abs(reference[i] - notes[k]) <= 12 && reference[i] != notes[k] && notNeighbour(notes, k, reference[i])) {
                 a[j] = reference[i];
                 j++;
             }
@@ -62,6 +62,16 @@ public class PSO1 {
             b[i] = a[i];
         }
         return b;
+    }
+
+    private boolean notNeighbour(int[] notes, int k, int referenceNote) {
+        if (k - 1 >= 0 && referenceNote == notes[k - 1]) {
+            return false;
+        }
+        if (k - 2 >= 0 && referenceNote == notes[k - 2]) {
+            return false;
+        }
+        return true;
     }
 
     private int PSO(int[] reference) {
