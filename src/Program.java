@@ -64,6 +64,29 @@ public class Program {
                 }
             }
         }
+        Thread.sleep(2000);
         int[] melody = pso.PSO2(chords);
+        j = 0;
+        MidiChannel[] channel4 = synth.getChannels();
+        MidiChannel[] channel5 = synth.getChannels();
+        for (int i = 0; i < chords.length - 4; i += 3) {
+            channel1[2].noteOn(chords[i], 60);
+            channel2[2].noteOn(chords[i + 1], 60);
+            channel3[2].noteOn(chords[i + 2], 60);
+            channel4[2].noteOn(melody[j], 60);
+            Thread.sleep(250);
+            channel4[2].noteOff(melody[j]);
+            j++;
+            channel5[2].noteOn(melody[j], 60);
+            Thread.sleep(250);
+            channel5[2].noteOff(melody[j], 60);
+            channel1[2].noteOff(chords[i]);
+            channel2[2].noteOff(chords[i + 1]);
+            channel3[2].noteOff(chords[i + 2]);
+            j++;
+            System.out.print(i);
+            System.out.println();
+            System.out.println(j);
+        }
     }
 }
