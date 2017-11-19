@@ -88,5 +88,7 @@ public class Program {
             System.out.println();
             System.out.println(j);
         }
+        MidiWriter writer = new MidiWriter(chords, melody);
+        writer.generateMusicString();
     }
 }
