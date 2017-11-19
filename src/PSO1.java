@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PSO1 {
     int lowerBound = 48;
     int upperBound = 72;
@@ -36,19 +38,19 @@ public class PSO1 {
         int j = 0;
         if (prevNote != 0) {
             for (int i = lowerMelody; i <= upperMelody; i++) {
-                if ((i - note1) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                if ((i - note1) % 12 == 0 && Math.abs(i - prevNote) <= 12 && i != prevNote) {
                     a[j] = i;
                     j++;
                 }
             }
             for (int i = lowerMelody; i <= upperMelody; i++) {
-                if ((i - note2) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                if ((i - note2) % 12 == 0 && Math.abs(i - prevNote) <= 12 && i != prevNote) {
                     a[j] = i;
                     j++;
                 }
             }
             for (int i = lowerMelody; i <= upperMelody; i++) {
-                if ((i - note3) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                if ((i - note3) % 12 == 0 && Math.abs(i - prevNote) <= 12 && i != prevNote) {
                     a[j] = i;
                     j++;
                 }
@@ -77,6 +79,7 @@ public class PSO1 {
         for (int i = 0; i < j; i++) {
             b[i] = a[i];
         }
+        Arrays.sort(b);
         return b;
     }
 
