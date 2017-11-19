@@ -1,6 +1,8 @@
 public class PSO1 {
     int lowerBound = 48;
     int upperBound = 72;
+    int lowerMelody = 73;
+    int upperMelody = 96;
     int[] reference = new int[15];
     int tonality;
     double c1 = 0.9;
@@ -11,6 +13,46 @@ public class PSO1 {
         this.tonality = tonality;
         reference = setReference(tonality);
     }
+
+  /*  public int[] PSO2(int[] notes) {
+        int[] melody = new int[notes.length * 2];
+        int j = 0;
+        for (int i = 0; i < melody.length; i++) {
+            if (i == 0) {
+                melody[i] = PSO(setMelodyReference(notes[j], 0));
+            } else {
+                melody[i] = PSO(setMelodyReference(notes[j], melody[i - 1]));
+            }
+            melody[i] = PSO(setMelodyReference(notes[j], melody[i - 1]));
+            j++;
+        }
+        return melody;
+    }*/
+
+  /*  private int[] setMelodyReference(int chord, int prevNote) {
+        int reference[] = new int[32];
+        int j = 0;
+        int
+        do {
+
+        } while ()
+    }*/
+
+   /* private int[] melodyReference(int chord) {
+        int[] a = new int[15];
+        int current = chord;
+        int[] j = {chord}
+        int i = 0;
+        while (current <= upperMelody) {
+            a[i] = current + 12;
+            current += 12;
+            i++;
+        }
+        int[] b = new int[i];
+
+        return a;
+    }*/
+
 
     public int[] PSO() {
         int a[] = new int[16];
