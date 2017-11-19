@@ -14,44 +14,71 @@ public class PSO1 {
         reference = setReference(tonality);
     }
 
-  /*  public int[] PSO2(int[] notes) {
-        int[] melody = new int[notes.length * 2];
+    public int[] PSO2(int[] notes) {
+        int[] melody = new int[notes.length / 3 * 2];
         int j = 0;
-        for (int i = 0; i < melody.length; i++) {
+        for (int i = 0; i < melody.length; i += 3) {
             if (i == 0) {
-                melody[i] = PSO(setMelodyReference(notes[j], 0));
+                melody[j] = PSO(melodyReference(notes[i], notes[i + 1], notes[i + 2], 0));
+                j++;
             } else {
-                melody[i] = PSO(setMelodyReference(notes[j], melody[i - 1]));
+                melody[j] = PSO(melodyReference(notes[i], notes[i + 1], notes[i + 2], melody[j - 1]));
+                j++;
             }
-            melody[i] = PSO(setMelodyReference(notes[j], melody[i - 1]));
+            melody[j] = PSO(melodyReference(notes[i], notes[i + 1], notes[i + 2], melody[j - 1]));
             j++;
         }
         return melody;
-    }*/
+    }
 
-  /*  private int[] setMelodyReference(int chord, int prevNote) {
-        int reference[] = new int[32];
-        int j = 0;
-        int
-        do {
-
-        } while ()
-    }*/
-
-   /* private int[] melodyReference(int chord) {
+    private int[] melodyReference(int note1, int note2, int note3, int prevNote) {
         int[] a = new int[15];
-        int current = chord;
-        int[] j = {chord}
-        int i = 0;
-        while (current <= upperMelody) {
-            a[i] = current + 12;
-            current += 12;
-            i++;
+        int j = 0;
+        if (prevNote != 0) {
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note1) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                    a[j] = i;
+                    j++;
+                }
+            }
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note2) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                    a[j] = i;
+                    j++;
+                }
+            }
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note3) % 12 == 0 && Math.abs(i - prevNote) <= 12) {
+                    a[j] = i;
+                    j++;
+                }
+            }
+        } else {
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note1) % 12 == 0) {
+                    a[j] = i;
+                    j++;
+                }
+            }
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note2) % 12 == 0) {
+                    a[j] = i;
+                    j++;
+                }
+            }
+            for (int i = lowerMelody; i <= upperMelody; i++) {
+                if ((i - note3) % 12 == 0) {
+                    a[j] = i;
+                    j++;
+                }
+            }
         }
-        int[] b = new int[i];
-
-        return a;
-    }*/
+        int[] b = new int[j];
+        for (int i = 0; i < j; i++) {
+            b[i] = a[i];
+        }
+        return b;
+    }
 
 
     public int[] PSO() {

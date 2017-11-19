@@ -64,5 +64,6 @@ public class Program {
                 }
             }
         }
+        int[] melody = pso.PSO2(chords);
     }
 }
