@@ -14,7 +14,7 @@ public class PSO {
      * @value tonality - the tonality of our song
      * @value c1 - the constant for PSO
      * @value c2 - the constant for PSO
-     * @value m - the impulse of PSO
+     * @value m - the impulse for PSO
      */
     int lowerBound = 48;
     int upperBound = 72;
@@ -26,11 +26,23 @@ public class PSO {
     double c2 = 1.2;
     double m = 0.015;
 
+    /**
+     * Constructor for creating object of PSO class
+     * Defines reference notes depends on tonality
+     *
+     * @param tonality - the tonality of the song
+     */
     public PSO(int tonality) {
         this.tonality = tonality;
         reference = setReference(tonality);
     }
 
+    /**
+     * This function generates melody notes for chords notes
+     *
+     * @param notes - generated noted of chords
+     * @return generated notes of melody
+     */
     public int[] PSO2(int[] notes) {
         int[] melody = new int[notes.length / 3 * 2];
         int j = 0;
@@ -48,6 +60,15 @@ public class PSO {
         return melody;
     }
 
+    /**
+     * Defines array with possible notes of the melody for the chord
+     *
+     * @param note1    - the first note of a chord
+     * @param note2    - the second note of a chord
+     * @param note3    - the third note of a chord
+     * @param prevNote - the previous note of the melody
+     * @return sorted array with possible notes of melody for the chord
+     */
     private int[] melodyReference(int note1, int note2, int note3, int prevNote) {
         int[] a = new int[15];
         int j = 0;
@@ -98,7 +119,9 @@ public class PSO {
         return b;
     }
 
-
+    /**
+     * @return
+     */
     public int[] PSO() {
         int a[] = new int[16];
         for (int i = 0; i < 16; i++) {
