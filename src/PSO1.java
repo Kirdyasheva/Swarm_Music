@@ -1,6 +1,21 @@
+/**
+ * Class that generate notes with PSO algorithm
+ */
+
 import java.util.Arrays;
 
 public class PSO1 {
+    /**
+     * @value lowerBound - the hardcoded lower point in our interval for generating chords
+     * @value upperBound - the hardcoded upper point in our interval for generating chords
+     * @value lowerMelody - the hardcoded lower point in our interval for generating melody
+     * @value upperMelody - the hardcoded upper point in our interval for generation melody
+     * @value reference[] - the array with possible first notes of chords. Depends of tonality
+     * @value tonality - the tonality of our song
+     * @value c1 - the constant for PSO
+     * @value c2 - the constant for PSO
+     * @value m - the impulse of PSO
+     */
     int lowerBound = 48;
     int upperBound = 72;
     int lowerMelody = 73;
