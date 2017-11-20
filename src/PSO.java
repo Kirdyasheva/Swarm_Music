@@ -190,6 +190,14 @@ public class PSO {
         return b;
     }
 
+    /**
+     * The function defines if this note already exists in the bar
+     *
+     * @param notes         - the array of generated notes of chords
+     * @param k             - the number of the last generated note
+     * @param referenceNote - the array with possible notes to be chosen for generating chord
+     * @return false if this note already exists in this bar, true otherwise
+     */
     private boolean notNeighbour(int[] notes, int k, int referenceNote) {
         if (k - 1 >= 0 && referenceNote == notes[k - 1]) {
             return false;
@@ -200,6 +208,12 @@ public class PSO {
         return true;
     }
 
+    /**
+     * The PSO algorithm for generating notes
+     *
+     * @param reference - the array with possible notes that can be started note of a chord
+     * @return the next generated note
+     */
     private int PSO(int[] reference) {
         Particles[] p = new Particles[100];
         GlobalBest globalBest = new GlobalBest(reference);
@@ -227,14 +241,4 @@ public class PSO {
         } while (k < 10);
         return globalBest.getPosition();
     }
-
-   /* private double calculateFitness(Particles p, int[] reference) {
-        double min = Double.POSITIVE_INFINITY;
-        for (int i = 0; i < reference.length; i++) {
-            if (Math.abs(p.getPosition() - reference[i]) < min) {
-                min = Math.abs(p.getPosition() - reference[i]);
-            }
-        }
-        return min;
-    }*/
 }
