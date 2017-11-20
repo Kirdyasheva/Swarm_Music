@@ -2,11 +2,35 @@ import javax.sound.midi.*;
 
 public class Program {
     public static void main(String[] args) throws MidiUnavailableException, InterruptedException {
+        /**
+         * @value tonality - the chosen tonality of the song
+         */
         int tonality = 48;
         PSO pso = new PSO(tonality);
+        /**
+         * @value a - arrays with the first notes of the chords
+         */
         int[] a = pso.PSO();
-        int[] chords = new int[a.length * 3];
+        /**
+         * chords - the array of generated chords
+         */
+        int[] chords = createChords(a, tonality);
 
+
+        Thread.sleep(2000);
+        int[] melody = pso.PSO2(chords);
+
+        playSong(chords, melody);
+
+        /**
+         * This code runs generating midi file with arrays of chords and melody
+         */
+        MidiWriter writer = new MidiWriter(chords, melody);
+        writer.generateMusicString();
+    }
+
+    public static int[] createChords(int[] a, int tonality) throws MidiUnavailableException, InterruptedException {
+        int chords[] = new int[48];
         Synthesizer synth = MidiSystem.getSynthesizer();
         synth.open();
         MidiChannel[] channel1 = synth.getChannels();
@@ -64,11 +88,18 @@ public class Program {
                 }
             }
         }
-        Thread.sleep(2000);
-        int[] melody = pso.PSO2(chords);
-        j = 0;
+        return chords;
+    }
+
+    public static void playSong(int[] chords, int[] melody) throws MidiUnavailableException, InterruptedException {
+        Synthesizer synth = MidiSystem.getSynthesizer();
+        synth.open();
+        MidiChannel[] channel1 = synth.getChannels();
+        MidiChannel[] channel2 = synth.getChannels();
+        MidiChannel[] channel3 = synth.getChannels();
         MidiChannel[] channel4 = synth.getChannels();
         MidiChannel[] channel5 = synth.getChannels();
+        int j = 0;
         for (int i = 0; i < chords.length - 4; i += 3) {
             channel1[2].noteOn(chords[i], 60);
             channel2[2].noteOn(chords[i + 1], 60);
@@ -84,11 +115,6 @@ public class Program {
             channel2[2].noteOff(chords[i + 1]);
             channel3[2].noteOff(chords[i + 2]);
             j++;
-            System.out.print(i);
-            System.out.println();
-            System.out.println(j);
         }
-        MidiWriter writer = new MidiWriter(chords, melody);
-        writer.generateMusicString();
     }
 }
