@@ -1,3 +1,7 @@
+/**
+ * This class is used to write our sequence of notes to midi file
+ */
+
 import org.jfugue.midi.MidiFileManager;
 import org.jfugue.pattern.Pattern;
 
@@ -9,10 +13,24 @@ class MidiWriter {
     int[] chords;
     int[] melody;
 
+    /**
+     * Constructor for saving generated notes to local arrays
+     *
+     * @param chords - the array with notes of chords
+     * @param melody - the array with notes of melody
+     */
+
     public MidiWriter(int[] chords, int[] melody) {
         this.chords = chords;
         this.melody = melody;
     }
+
+    /**
+     * Converts string to midi file
+     *
+     * @param tempo       - hardcoded BMP of music
+     * @param musicString - string built by generateMusicString()
+     */
 
     private void createMidiFile(int tempo, String musicString) {
         String midiFileNameEnd = "song.mid";
@@ -23,6 +41,10 @@ class MidiWriter {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Public function for generating midi file
+     */
 
     public void generateMusicString() {
         StringBuilder sb = new StringBuilder();
