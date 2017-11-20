@@ -16,8 +16,8 @@ public class Program {
          */
         int[] chords = createChords(a, tonality);
 
-
         Thread.sleep(2000);
+
         int[] melody = pso.PSO2(chords);
 
         playSong(chords, melody);
@@ -29,6 +29,15 @@ public class Program {
         writer.generateMusicString();
     }
 
+    /**
+     * The finction creates chords depends on the first notes of the chords and major tonality
+     *
+     * @param a        - the array contains the first note of the chords
+     * @param tonality - the chosen tonality
+     * @return the array of chords
+     * @throws MidiUnavailableException
+     * @throws InterruptedException
+     */
     public static int[] createChords(int[] a, int tonality) throws MidiUnavailableException, InterruptedException {
         int chords[] = new int[48];
         Synthesizer synth = MidiSystem.getSynthesizer();
@@ -91,6 +100,14 @@ public class Program {
         return chords;
     }
 
+    /**
+     * The function plays the created song
+     *
+     * @param chords - the array of created chords
+     * @param melody - the array of created notes of the melodu
+     * @throws MidiUnavailableException
+     * @throws InterruptedException
+     */
     public static void playSong(int[] chords, int[] melody) throws MidiUnavailableException, InterruptedException {
         Synthesizer synth = MidiSystem.getSynthesizer();
         synth.open();
