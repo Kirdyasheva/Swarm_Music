@@ -215,10 +215,10 @@ public class PSO {
      * @return the next generated note
      */
     private int PSO(int[] reference) {
-        Particles[] p = new Particles[1000];
+        Particle[] p = new Particle[1000];
         GlobalBest globalBest = new GlobalBest(reference);
         for (int j = 0; j < p.length; j++) {
-            p[j] = new Particles(c1, c2, m, (double) reference[0], (double) reference[reference.length - 1]);
+            p[j] = new Particle(c1, c2, m, (double) reference[0], (double) reference[reference.length - 1]);
         }
         int best = globalBest.countGlobal(p, reference);
 

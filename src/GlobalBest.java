@@ -40,7 +40,7 @@ public class GlobalBest {
      * @param reference - the array of the possible notes
      * @return global best of the fitness function(note)
      */
-    public int countGlobal(Particles[] p, int[] reference) {
+    public int countGlobal(Particle[] p, int[] reference) {
         int[] a = new int[reference.length];
         for (int i = 0; i < p.length; i++) {
             double min = Double.POSITIVE_INFINITY;

@@ -1,7 +1,7 @@
 /**
  * The class describes particle for PSO algorithm
  */
-public class Particles {
+public class Particle {
     /**
      * @value position - the current position of the particle
      * @value velocity - the current velocity of the particle
@@ -41,7 +41,7 @@ public class Particles {
      * @see PSO#c2
      * @see PSO#m
      */
-    public Particles(double c1, double c2, double m, double start, double end) {
+    public Particle(double c1, double c2, double m, double start, double end) {
         this.c1 = c1;
         this.c2 = c2;
         this.m = m;
