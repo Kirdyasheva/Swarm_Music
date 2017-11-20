@@ -16,7 +16,7 @@ public class GlobalBest {
     public GlobalBest(int[] reference) {
         do {
             position = (int) (Math.random() * (reference[reference.length - 1] - reference[0] + 1) + reference[0]);
-        } while (!inReference(reference, position));
+        } while (!isInReference(reference, position));
     }
 
     /**
@@ -24,7 +24,7 @@ public class GlobalBest {
      * @param position  - checks if the position in the interval between lowest and highest note
      * @return true if the position in the interval, false otherwise
      */
-    private boolean inReference(int[] reference, int position) {
+    private boolean isInReference(int[] reference, int position) {
         for (int i = 0; i < reference.length; i++) {
             if (reference[i] == position) {
                 return true;
