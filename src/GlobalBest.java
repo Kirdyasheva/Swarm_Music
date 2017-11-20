@@ -33,6 +33,13 @@ public class GlobalBest {
         return false;
     }
 
+    /**
+     * The function counts the global best of the fitness function
+     *
+     * @param p         - the array of particles
+     * @param reference - the array of the possible notes
+     * @return global best of the fitness function(note)
+     */
     public int countGlobal(Particles[] p, int[] reference) {
         int[] a = new int[reference.length];
         for (int i = 0; i < p.length; i++) {
@@ -58,6 +65,11 @@ public class GlobalBest {
         return reference[note];
     }
 
+    /**
+     * The getter of the best position(note)
+     *
+     * @return the note that is the best position
+     */
     public int getPosition() {
         return position;
     }
