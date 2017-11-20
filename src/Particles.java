@@ -60,23 +60,47 @@ public class Particles {
         position = (Math.random() * (end - start)) + start;
     }
 
+    /**
+     * Sets new position as sum of the current position and velocity
+     */
     public void setPosition() {
         position = position + velocity;
     }
 
+    /**
+     * Sets velocity depends on constants, best position of particles and global function.
+     *
+     * @param globalBest - the note that drew the biggest number of particles
+     */
     public void setVelocity(double globalBest) { //firstly update velocity
         velocity = velocity * m + c1 * Math.random() * (myBestPosition - position) + c2 * Math.random() * (globalBest - position);
     }
 
+    /**
+     * Setter of best fitness function of the particle
+     *
+     * @param myBest - new best fitness function of the particle
+     */
     public void setMyBest(double myBest) {
         this.myBest = myBest;
     }
 
+    /**
+     * Setter of best position of the particle
+     *
+     * @param bestPosition - new best position of the particle
+     */
     public void setMyBestPosition(double bestPosition) {
         myBestPosition = bestPosition;
     }
 
 
+    /**
+     * Recounts the fitness function of the particle
+     *
+     * @param reference - the array of possible note that can be generated as the next note
+     * @return new best fitness function of the particle
+     */
     public double updateMyBest(int[] reference) {
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < reference.length; i++) {
@@ -87,14 +111,20 @@ public class Particles {
         return min;
     }
 
+    /**
+     * Getter of the current position of the particle
+     *
+     * @return current position of the particle
+     */
     public double getPosition() {
         return position;
     }
 
-    public double getVelocity() {
-        return velocity;
-    }
-
+    /**
+     * Getter of the best fitness function of the particle
+     *
+     * @return best fitness function of the particle
+     */
     public double getMyBest() {
         return myBest;
     }
