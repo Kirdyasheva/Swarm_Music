@@ -2,6 +2,8 @@ import javax.sound.midi.*;
 
 public class Program {
     public static void main(String[] args) throws MidiUnavailableException, InterruptedException {
+        long startTime = System.currentTimeMillis();
+
         /**
          * @value tonality - the chosen tonality of the song
          */
@@ -27,6 +29,18 @@ public class Program {
          */
         MidiWriter writer = new MidiWriter(chords, melody);
         writer.generateMusicString();
+        long timeSpent = System.currentTimeMillis() - startTime;
+        System.out.print(timeSpent);
+        System.out.println();
+        for(int i=0; i<chords.length; i++){
+            System.out.print(chords[i]);
+            System.out.print(" ");
+        }
+        System.out.println();
+        for(int i=0; i<melody.length; i++){
+            System.out.print(melody[i]);
+            System.out.print(" ");
+        }
     }
 
     /**
