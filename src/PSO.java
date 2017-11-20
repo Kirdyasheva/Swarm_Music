@@ -120,7 +120,9 @@ public class PSO {
     }
 
     /**
-     * @return
+     * Public function to run PSO algorithm
+     *
+     * @return array of the first notes of the sequence of chords
      */
     public int[] PSO() {
         int a[] = new int[16];
@@ -134,6 +136,12 @@ public class PSO {
         return a;
     }
 
+    /**
+     * Generates gamma depends on major tonality
+     *
+     * @param tonality - integer tonality in midi values
+     * @return generated gamma in the array
+     */
     private int[] setReference(int tonality) {
         int[] a = new int[15];
         int current = tonality;
@@ -153,7 +161,15 @@ public class PSO {
         return a;
     }
 
-    private int[] resetReference(int[] notes, int k) { //reset array with possible values of chords depends on the neighbour note
+    /**
+     * The function redefine the array with possible notes.
+     * New notes can't make intervals exceeds 12 and there are no the same notes in the one bar
+     *
+     * @param notes - notes of chords that had been already generated
+     * @param k     - the number of the last generated note
+     * @return array of new possible notes depends on generated notes
+     */
+    private int[] resetReference(int[] notes, int k) {
         int[] a = new int[24];
         int j = 0;
         for (int i = 0; i < reference.length; i++) {
