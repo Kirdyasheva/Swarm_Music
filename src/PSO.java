@@ -4,7 +4,7 @@
 
 import java.util.Arrays;
 
-public class PSO1 {
+public class PSO {
     /**
      * @value lowerBound - the hardcoded lower point in our interval for generating chords
      * @value upperBound - the hardcoded upper point in our interval for generating chords
@@ -26,7 +26,7 @@ public class PSO1 {
     double c2 = 1.2;
     double m = 0.015;
 
-    public PSO1(int tonality) {
+    public PSO(int tonality) {
         this.tonality = tonality;
         reference = setReference(tonality);
     }

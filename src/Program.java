@@ -3,7 +3,7 @@ import javax.sound.midi.*;
 public class Program {
     public static void main(String[] args) throws MidiUnavailableException, InterruptedException {
         int tonality = 48;
-        PSO1 pso = new PSO1(tonality);
+        PSO pso = new PSO(tonality);
         int[] a = pso.PSO();
         int[] chords = new int[a.length * 3];
 
