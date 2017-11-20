@@ -16,7 +16,7 @@ class MidiWriter {
 
     private void createMidiFile(int tempo, String musicString) {
         String midiFileNameEnd = "song.mid";
-        Pattern pattern = new Pattern(musicString).setVoice(0).setInstrument("Piano").setTempo(tempo);
+        Pattern pattern = new Pattern(musicString).setVoice(0).setInstrument(106).setTempo(tempo);
         try {
             MidiFileManager.savePatternToMidi(pattern, new File(midiFileNameEnd));
         } catch (IOException e) {
