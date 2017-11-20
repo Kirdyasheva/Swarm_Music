@@ -22,9 +22,9 @@ public class PSO {
     int upperMelody = 96;
     int[] reference = new int[15];
     int tonality;
-    double c1 = 1.2;
-    double c2 = 1.2;
-    double m = 0.8;
+    final double c1 = 1.2;
+    final double c2 = 1.2;
+    final double m = 0.8;
 
     /**
      * Constructor for creating object of PSO class

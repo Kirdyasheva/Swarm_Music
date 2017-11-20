@@ -7,7 +7,7 @@ public class Program {
         /**
          * @value tonality - the chosen tonality of the song
          */
-        int tonality = 48;
+        final int tonality = 48;
         PSO pso = new PSO(tonality);
         /**
          * @value a - arrays with the first notes of the chords
